@@ -16,7 +16,8 @@ vim.cmd("set shiftwidth=4")
 vim.cmd("set expandtab")
 vim.cmd("set number")
 vim.cmd("set relativenumber")
-vim.cmd("set scrolloff=5")
+vim.cmd("set scrolloff=10")
+vim.cmd("set scroll=10")
 vim.cmd("colorscheme catppuccin")
 
 -- # Telescope
@@ -31,4 +32,11 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 vim.keymap.set('i', '<M-->', ' <- ')
 vim.keymap.set('i', '<M-m>', ' %>% ')
 vim.keymap.set('i', '<M-i>', ' %in% ')
+vim.keymap.set('n', '<C-d>', '10jzz')
+vim.keymap.set('n', '<C-u>', '10kzz')
+
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==") -- move line up(n)
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==") -- move line down(n)
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
 

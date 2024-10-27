@@ -18,6 +18,9 @@ return {
             end,
         },
     },
+    "gaalcaras/ncm-R",
+    "ncm2/ncm2",
+    "roxma/nvim-yarp"
 
 }
 
