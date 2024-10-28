@@ -13,8 +13,6 @@ require("nvim-treesitter.configs").setup({
 })
 
 
--- Test cmp
-
 -- Cmds
 vim.cmd("set colorcolumn=80")
 vim.cmd("set shiftwidth=4")
@@ -39,16 +37,24 @@ vim.keymap.set('i', '<M-i>', ' %in% ')
 vim.keymap.set('n', '<C-d>', '10jzz')
 vim.keymap.set('n', '<C-u>', '10kzz')
 
-vim.keymap.set("n", "<A-j>", ":m .+1<CR>==") -- move line up(n)
-vim.keymap.set("n", "<A-k>", ":m .-2<CR>==") -- move line down(n)
-vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv") -- move line up(v)
-vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv") -- move line down(v)
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "<leader>e", ":e ") -- move line down(v)
-vim.keymap.set("n", "<leader>bd", ":bd<CR>") -- move line down(v)
+vim.keymap.set("n", "<leader>e", ":e ")
+
+vim.keymap.set("n", "<leader>bd", ":bd<CR>")
+vim.keymap.set("n", "<leader>'", "<C-6>")
 
 
--- Set up nvim-cmp.
+vim.keymap.set("n", "<leader>t", ":vsplit<CR><C-w>l:terminal<CR>")
+
+vim.keymap.set("n", "<leader>0", ":e ~/.config/nvim/init.lua<CR>")
+vim.keymap.set("n", "<leader>%", ":source %<CR>")
+
+
+-- Set up nvim-cmp
 local cmp = require'cmp'
 
 cmp.setup({
