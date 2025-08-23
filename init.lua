@@ -103,7 +103,7 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -174,6 +174,7 @@ vim.keymap.set('n', '<C-k>', '5<C-y>')
 vim.keymap.set('n', '<leader>w', '<C-w>')
 vim.keymap.set('n', '<leader>m', ':split<CR>:terminal<cr>')
 vim.keymap.set('n', '<leader>z', ':w<CR>:source ~/.config/nvim/init.lua<CR>')
+vim.keymap.set('n', '<leader>bd', ':bd<CR>')
 
 -- Code section
 vim.keymap.set('n', '<leader>ai', 'i#! <ESC>80i-<ESC>0lli  <ESC>i')
@@ -182,6 +183,13 @@ vim.keymap.set('n', '<leader>ap', ":lua vim.fn.expand('%')<CR>o<C-r>%<ESC><C-v>0
 
 -- Outline
 vim.keymap.set('n', '<leader>n', ':Outline<CR>')
+
+-- Neo-tree
+vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>:set number relativenumber<CR>')
+
+-- Git
+vim.keymap.set('n', '<leader>gp', ':! git add --all && git commit -m "update" && git push origin main<CR>')
+
 -- Execute codes in interactive mode
 -- vim.keymap.set('n', '<leader>rl', 'yy<C-w>wpi<CR><C-\\><C-n><C-w>wj', { desc = 'run line and go to the next line' })
 -- vim.keymap.set('n', '<leader>rr', 'yy<C-w>wpi<CR><C-\\><C-n><C-w>w', { desc = 'run line and stay in line' })
@@ -203,9 +211,9 @@ vim.keymap.set('n', '<leader>n', ':Outline<CR>')
 --
 
 -- Python interactive
-vim.keymap.set('n', '<leader>pv', ':vsplit<CR>:terminal<CR>iconda activate bioinfo<CR>ipython --no-autoindent<CR><C-\\><C-n><C-w>w')
-vim.keymap.set('n', '<leader>ph', ':split<CR>:terminal<CR>iconda activate bioinfo<CR>ipython --no-autoindent<CR><C-\\><C-n><C-w>w')
-vim.keymap.set('n', '<leader>pq', '<C-w>wiexit()<CR><C-\\><C-n><C-w>w<C-w>wiexit<CR>')
+-- vim.keymap.set('n', '<leader>pv', ':vsplit<CR>:terminal<CR>iconda activate bioinfo<CR>ipython --no-autoindent<CR><C-\\><C-n><C-w>w')
+-- vim.keymap.set('n', '<leader>ph', ':split<CR>:terminal<CR>iconda activate bioinfo<CR>ipython --no-autoindent<CR><C-\\><C-n><C-w>w')
+-- vim.keymap.set('n', '<leader>pq', '<C-w>wiexit()<CR><C-\\><C-n><C-w>w<C-w>wiexit<CR>')
 
 --  See `:help vim.keymap.set()`
 
