@@ -171,6 +171,7 @@ vim.o.confirm = true
 vim.keymap.set('n', "<leader>'", '<C-^>')
 vim.keymap.set('n', '<C-j>', '5<C-e>')
 vim.keymap.set('n', '<C-k>', '5<C-y>')
+vim.keymap.set('n', '<leader>w', '<C-w>')
 vim.keymap.set('n', '<leader>m', ':split<CR>:terminal<cr>')
 vim.keymap.set('n', '<leader>z', ':w<CR>:source ~/.config/nvim/init.lua<CR>')
 
@@ -179,6 +180,8 @@ vim.keymap.set('n', '<leader>ai', 'i#! <ESC>80i-<ESC>0lli  <ESC>i')
 vim.keymap.set('n', '<leader>ac', '80|C<ESC>0')
 vim.keymap.set('n', '<leader>ap', ":lua vim.fn.expand('%')<CR>o<C-r>%<ESC><C-v>0d:split<CR>:terminal<CR>igrep '^#!' <C-\\><C-n>pi<CR>exit")
 
+-- Outline
+vim.keymap.set('n', '<leader>n', ':Outline<CR>')
 -- Execute codes in interactive mode
 -- vim.keymap.set('n', '<leader>rl', 'yy<C-w>wpi<CR><C-\\><C-n><C-w>wj', { desc = 'run line and go to the next line' })
 -- vim.keymap.set('n', '<leader>rr', 'yy<C-w>wpi<CR><C-\\><C-n><C-w>w', { desc = 'run line and stay in line' })
@@ -283,6 +286,24 @@ rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+
+  {
+    'hedyhli/outline.nvim',
+    config = function()
+      -- Example mapping to toggle outline
+      vim.keymap.set('n', '<leader>o', '<cmd>Outline<CR>', { desc = 'Toggle Outline' })
+
+      require('outline').setup {
+        -- Your setup opts here (leave empty to use defaults)
+        providers = {
+          priority = { 'markdown', 'lsp', 'coc', 'norg' },
+          markdown = {
+            filetypes = { 'markdown', 'quarto' },
+          },
+        },
+      }
+    end,
+  },
 
   {
     'R-nvim/R.nvim',
@@ -1048,8 +1069,8 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
