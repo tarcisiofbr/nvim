@@ -174,7 +174,7 @@ vim.keymap.set('n', '<C-k>', '5<C-y>')
 vim.keymap.set('n', '<leader>w', '<C-w>')
 vim.keymap.set('n', '<leader>m', ':split<CR>:terminal<cr>')
 vim.keymap.set('n', '<leader>z', ':w<CR>:source ~/.config/nvim/init.lua<CR>')
-vim.keymap.set('n', '<leader>bd', ':bd<CR>')
+vim.keymap.set('n', '<leader>bq', ':bd<CR>')
 
 -- Code section
 vim.keymap.set('n', '<leader>ai', 'i#! <ESC>80i-<ESC>0lli  <ESC>i')
