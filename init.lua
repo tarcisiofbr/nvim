@@ -177,9 +177,9 @@ vim.keymap.set('n', '<leader>z', ':w<CR>:source ~/.config/nvim/init.lua<CR>')
 vim.keymap.set('n', '<leader>bq', ':bd<CR>')
 
 -- Code section
-vim.keymap.set('n', '<leader>ai', 'i#! <ESC>80i-<ESC>0lli  <ESC>i')
-vim.keymap.set('n', '<leader>ac', '80|C<ESC>0')
-vim.keymap.set('n', '<leader>ap', ":lua vim.fn.expand('%')<CR>o<C-r>%<ESC><C-v>0d:split<CR>:terminal<CR>igrep '^#!' <C-\\><C-n>pi<CR>exit")
+-- vim.keymap.set('n', '<leader>ai', 'i#! <ESC>80i-<ESC>0lli  <ESC>i')
+-- vim.keymap.set('n', '<leader>ac', '80|C<ESC>0')
+-- vim.keymap.set('n', '<leader>ap', ":lua vim.fn.expand('%')<CR>o<C-r>%<ESC><C-v>0d:split<CR>:terminal<CR>igrep '^#!' <C-\\><C-n>pi<CR>exit")
 
 -- Outline
 vim.keymap.set('n', '<leader>n', ':Outline<CR>:set number relativenumber<CR>')
@@ -311,22 +311,6 @@ require('lazy').setup({
         },
       }
     end,
-  },
-
-  {
-    'R-nvim/R.nvim',
-    -- Only required if you also set defaults.lazy = true
-    lazy = false,
-  },
-  {
-    'R-nvim/cmp-r',
-    {
-      'hrsh7th/nvim-cmp',
-      config = function()
-        require('cmp').setup { sources = { { name = 'cmp_r' } } }
-        require('cmp_r').setup {}
-      end,
-    },
   },
 
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
@@ -896,6 +880,9 @@ require('lazy').setup({
     --- @module 'blink.cmp'
     --- @type blink.cmp.Config
     opts = {
+      enabled = function()
+        return not vim.tbl_contains({ 'quarto', 'r' }, vim.bo.filetype)
+      end,
       keymap = {
         -- 'default' (recommended) for mappings similar to built-in completions
         --   <c-y> to accept ([y]es) the completion.
@@ -918,7 +905,7 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'enter',
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -1063,6 +1050,22 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+  -- R plugins
+  {
+    'R-nvim/R.nvim',
+    -- Only required if you also set defaults.lazy = true
+    lazy = false,
+  },
+  {
+    'R-nvim/cmp-r',
+    {
+      'hrsh7th/nvim-cmp',
+      config = function()
+        require('cmp').setup { sources = { { name = 'cmp_r' } } }
+        require('cmp_r').setup {}
+      end,
+    },
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
