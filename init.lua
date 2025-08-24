@@ -182,7 +182,7 @@ vim.keymap.set('n', '<leader>ac', '80|C<ESC>0')
 vim.keymap.set('n', '<leader>ap', ":lua vim.fn.expand('%')<CR>o<C-r>%<ESC><C-v>0d:split<CR>:terminal<CR>igrep '^#!' <C-\\><C-n>pi<CR>exit")
 
 -- Outline
-vim.keymap.set('n', '<leader>n', ':Outline<CR>')
+vim.keymap.set('n', '<leader>n', ':Outline<CR>:set number relativenumber<CR>')
 
 -- Neo-tree
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>:set number relativenumber<CR>')
