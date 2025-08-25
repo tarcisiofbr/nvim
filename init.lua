@@ -19,7 +19,6 @@
 ========                                                     ========
 =====================================================================
 =====================================================================
-=
 
 What is Kickstart?
 
@@ -168,13 +167,13 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 -- [[ Basic Keymaps ]]
 -- General
-vim.keymap.set('n', "<leader>'", '<C-^>')
+vim.keymap.set('n', "<leader>'", '<C-^>', { desc = 'Go to previous buffer' })
 vim.keymap.set('n', '<C-j>', '5<C-e>')
 vim.keymap.set('n', '<C-k>', '5<C-y>')
 vim.keymap.set('n', '<leader>w', '<C-w>')
-vim.keymap.set('n', '<leader>m', ':split<CR>:terminal<cr>')
-vim.keymap.set('n', '<leader>z', ':w<CR>:source ~/.config/nvim/init.lua<CR>')
-vim.keymap.set('n', '<leader>bq', ':bd<CR>')
+vim.keymap.set('n', '<leader>,', ':split<CR>:terminal<cr>', { desc = 'Open terminal' })
+vim.keymap.set('n', '<leader>z', ':w<CR>:source ~/.config/nvim/init.lua<CR>', { desc = 'source init.lua' })
+vim.keymap.set('n', '<leader>bq', ':bd<CR>', { desc = 'close current buffer' })
 
 -- Code section
 -- vim.keymap.set('n', '<leader>ai', 'i#! <ESC>80i-<ESC>0lli  <ESC>i')
@@ -182,10 +181,10 @@ vim.keymap.set('n', '<leader>bq', ':bd<CR>')
 -- vim.keymap.set('n', '<leader>ap', ":lua vim.fn.expand('%')<CR>o<C-r>%<ESC><C-v>0d:split<CR>:terminal<CR>igrep '^#!' <C-\\><C-n>pi<CR>exit")
 
 -- Outline
-vim.keymap.set('n', '<leader>n', ':Outline<CR>:set number relativenumber<CR>')
+vim.keymap.set('n', '<leader>n', ':Outline<CR>:set number relativenumber<CR>', { desc = 'Open buffer outline' })
 
 -- Neo-tree
-vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>:set number relativenumber<CR>')
+vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>:set number relativenumber<CR>', { desc = 'Toggle file tree' })
 
 -- Git
 vim.keymap.set('n', '<leader>gp', ':! git add --all && git commit -m "update" && git push origin main<CR>')
